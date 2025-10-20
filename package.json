@@ -1,0 +1,21 @@
+{
+  "name": "pets-db",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "studio": " npx prisma studio"
+  },
+  "keywords": ["senai", "nodejs", "prisma", "express"],
+  "author": "Arthur ",
+  "license": "MIT",
+  "description": "Atividade crud db com tema pets",
+  "dependencies": {
+    "@prisma/client": "^6.17.1",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.17.1"
+  }
+}
