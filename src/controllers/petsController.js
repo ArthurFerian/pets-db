@@ -75,11 +75,11 @@ export const criar = async (req, res) => {
         }
 
 
-        const novoAnimal = await AnimalModel.create(dado);
+        const novoPet = await PetsModel.create(dado);
 
         res.status(201).json({
             mensagem: 'Animal criado com sucesso!',
-            animal: novoAnimal
+            animal: novoPet
         })
 
 
@@ -96,46 +96,54 @@ export const atualizar = async (req, res) => {
     const id = parseInt(req.params.id);
     const dados = req.body;
 
-    const petExiste = await PetsModelModel.findById(id);
+    const petExiste = await PetsModel.findById(id);
 
     if (!petExiste) {
         return res.status(404).json({
-            erro: 'Pet não encontrado',
+            erro: 'Pet não encontrado com esse id',
             id: id
         })
     }
-    
+
+    const petAtualizado = await PetsModel.update(id, dados);
+
+        res.status(200).json({
+            mensagem: 'Pet atualizado com sucesso',
+            pet: petAtualizado
+        })
+
     } catch (error) {
-    res.status(500).json({
-        erro: 'Erro ao atualizar pet',
-        detalhes: error.message
-     })
+        res.status(500).json({
+            erro: 'Erro ao atualizar pets',
+            detalhes: error.message
+        })
     }
 }
+
 
 export const apagar = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
 
-        const bruxoExiste = await BruxoModel.findById(id);
+        const petExiste = await PetsModel.findById(id);
 
-        if (!bruxoExiste) {
+        if (!petExiste) {
             return res.status(404).json({
-                erro: 'Bruxo não encontrado',
+                erro: 'pet não encontrado',
                 id: id
             })
         }
         
-        await BruxoModel.deleteById(id);
+        await PetsModel.deletePet(id);
 
         res.status(200).json({
             mensagem: 'Pet apagado com sucesso!',
-            petRemovido: bruxoExiste
+            petRemovido: petExiste
         })
 
     } catch (error) {
         res.status(500).json({
-            erro: 'Erro ao apagar bruxo',
+            erro: 'Erro ao apagar pet',
             detalhes: error.message
         })
     }

@@ -8,11 +8,20 @@
     "dev": "nodemon server.js",
     "studio": " npx prisma studio"
   },
-  "keywords": ["senai", "nodejs", "prisma", "express"],
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [
+    "senai",
+    "nodejs",
+    "prisma",
+    "express"
+  ],
   "author": "Arthur ",
   "license": "MIT",
   "description": "Atividade crud db com tema pets",
   "dependencies": {
+    "@faker-js/faker": "^10.1.0",
     "@prisma/client": "^6.17.1",
     "express": "^5.1.0",
     "nodemon": "^3.1.10",

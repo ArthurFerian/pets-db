@@ -30,9 +30,8 @@ export const update = async (id, data) => {
       where: { id: Number(id) },
       data: {
          ...(data.nome && { nome: data.nome }),
-         ...(data.dono && { casa: data.dono }),
-         ...(data.especie && { patrono: data.especie }),
-         ...(data.varinha && { varinha: data.varinha }),
+         ...(data.dono && { dono: data.dono }),
+         ...(data.especie && { especie: data.especie }),
          ...(data.idade && { idade: Number(data.idade) }),
       }
    })
